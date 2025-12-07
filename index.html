@@ -1,1 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maplecliff National Guard (MCNG)</title>
+
+<style>
+/* ===================== ROOT VARIABLES ===================== */
+:root {
+  --blue: #0a1a3a;
+  --blue-light: #102753;
+  --red: #b60000;
+  --gold: #d9a441;
+  --white: #f2f2f2;
+  --muted: rgba(255,255,255,0.7);
+  --glass: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.08);
+  --radius: 14px;
+  --shadow: 0 8px 28px rgba(0,0,0,0.45);
+  --max-width: 1150px;
+}
+
+/* ===================== GLOBAL ===================== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: linear-gradient(135deg, #050b18, #0a1a3a 60%, #05080f);
+  font-family: "Inter", sans-serif;
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+.wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 22px;
+}
+
+/* ===================== FLOATING BADGE ===================== */
+.floating-badge {
+  position: fixed;
+  right: 24px;
+  bottom: 120px;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: #0d1b3c;
+  border: 3px solid var(--gold);
+  padding: 6px;
+  display: none;
+  z-index: 999;
+  box-shadow: var(--shadow);
+}
+.floating-badge img { width: 100%; height: 100%; border-radius: 50%; }
+
+/* Show after scroll */
+.show-badge {
+  display: block !important;
+}
+
+/* ===================== HEADER ===================== */
+header {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 16px 22px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+header img {
+  width: 62px;
+  height: 62px;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+header p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+header .home-btn {
+  margin-left: auto;
+  padding: 8px 16px;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+  color: #000;
+  font-weight: 700;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+header .home-btn:hover {
+  filter: brightness(1.15);
+}
+
+/* ===================== HERO ===================== */
+.hero {
+  margin-top: 22px;
+  background: url("mcng_banner.jpg") center/cover no-repeat;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 60px 26px;
+  position: relative;
+  box-shadow: var(--shadow);
+}
+
+.hero-content {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+}
+
+.hero img {
+  width: 95px;
+  height: 95px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.hero h2 {
+  font-size: 42px;
+  font-weight: 900;
+  background: linear-gradient(90deg, var(--gold), var(--white));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* ===================== SECTION ===================== */
+.section {
+  background: var(--glass);
+  padding: 26px;
+  margin-top: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.section h3 {
+  font-size: 26px;
+  margin-bottom: 16px;
+}
+
+.section p, .section li {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+ul { margin-left: 20px; }
+
+/* ===================== BOARD STATEMENT ===================== */
+.statement-box {
+  background: var(--blue-light);
+  border: 1px solid var(--gold);
+  padding: 26px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.statement-box img {
+  width: 80px;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+/* ===================== BUTTON ===================== */
+.apply-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, var(--gold), var(--red));
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 800;
+  color: #000;
+  box-shadow: var(--shadow);
+}
+.apply-btn:hover { filter: brightness(1.15); }
+
+/* ===================== FOOTER ===================== */
+footer {
+  margin-top: 40px;
+  text-align: center;
+  padding: 22px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  box-shadow: var(--shadow);
+}
+</style>
+
+</head>
+<body>
+
+<!-- Floating badge -->
+<div class="floating-badge" id="floatBadge">
+  <img src="mcng_emblem.webp" alt="MCNG Emblem" />
+</div>
+
+<div class="wrapper">
+
+<header>
+  <img src="mcng_emblem.webp" alt="MCNG emblem" />
+  <div>
+    <h1>Maplecliff National Guard (MCNG)</h1>
+    <p>Security • Strategy • Defense</p>
+  </div>
+  <a class="home-btn" href="#">Home</a>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <img src="mcng_emblem.webp" alt="MCNG Emblem">
+    <div>
+      <h2>Maplecliff National Guard</h2>
+      <p>Ensuring stability, rapid response and border-ready defense operations.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<div class="section">
+  <h3>Mission Statement</h3>
+  <p>
+    Welcome to the Maplecliff National Guard! Our mission is to ensure security,
+    conduct strategic operations, provide rapid emergency response, protect Maplecliff’s 
+    borders, and assist the police force.
+  </p>
+</div>
+
+<!-- RANKS -->
+<div class="section">
+  <h3>Rank Structure</h3>
+
+  <p><strong>General Officers</strong></p>
+  <ul>
+    <li>[GEN^1] High General — capybarafor_l1fe</li>
+    <li>[GEN^2] Low General — adz.6</li>
+    <li>[LTG] Lieutenant General — chunkmonster123495 / ice_aranion811</li>
+    <li>[MG] Major General — blazebrown8722</li>
+    <li>[BG] Brigadier General — tyty3260</li>
+  </ul>
+
+  <br>
+
+  <p><strong>Senior Officers</strong></p>
+  <ul>
+    <li>[COL] Colonel</li>
+    <li>[LTC] Lieutenant Colonel</li>
+    <li>[MAJ] Major</li>
+  </ul>
+
+  <br>
+
+  <p><strong>Junior Officers</strong></p>
+  <ul>
+    <li>[CPT] Captain</li>
+    <li>[1LT] First Lieutenant</li>
+    <li>[2LT] Second Lieutenant</li>
+  </ul>
+
+  <br>
+
+  <p><strong>Warrant Officers</strong></p>
+  <ul>
+    <li>[CW5] Chief Warrant Officer 5</li>
+    <li>[CW4] Chief Warrant Officer 4</li>
+    <li>[CW3] Chief Warrant Officer 3</li>
+    <li>[CW2] Chief Warrant Officer 2</li>
+    <li>[WO1] Warrant Officer 1</li>
+  </ul>
+
+  <br>
+
+  <p><strong>Senior NCOs</strong></p>
+  <ul>
+    <li>[SMA] Sergeant Major of the Army</li>
+    <li>[CSM] Command Sergeant Major</li>
+    <li>[SGM] Sergeant Major</li>
+    <li>[1SG] First Sergeant</li>
+    <li>[MSG] Master Sergeant</li>
+    <li>[SFC] Sergeant First Class</li>
+  </ul>
+
+  <br>
+
+  <p><strong>NCOs</strong></p>
+  <ul>
+    <li>[SSG] Staff Sergeant</li>
+    <li>[SGT] Sergeant</li>
+    <li>[CPL] Corporal</li>
+  </ul>
+
+  <br>
+
+  <p><strong>Junior Enlisted</strong></p>
+  <ul>
+    <li>[SPC] Specialist</li>
+    <li>[PFC] Private First Class</li>
+    <li>[PV2] Private</li>
+    <li>[PVT] Private</li>
+  </ul>
+</div>
+
+<!-- DIVISIONS -->
+<div class="section">
+<h3>Divisions</h3>
+
+<p><strong>Internal Divisions</strong></p>
+<ul>
+<li>MIA — Military Internal Affairs (achieved by rank)</li>
+<li>Bullet Ants — Offensive Division (selected upon entry)</li>
+<li>Steel Wolves — Defensive Division (selected upon entry)</li>
+</ul>
+
+<br>
+
+<p><strong>External Division</strong></p>
+<ul>
+  <li>USMS — United States Marshal Service  
+      (Lead by samcio10000)  
+      <br>Join: <a href="https://discord.gg/p9KTVmTqTE" target="_blank" style="color:var(--gold)">Click Here</a></li>
+</ul>
+</div>
+
+<!-- REQUIREMENTS -->
+<div class="section">
+  <h3>Requirements</h3>
+  <ul>
+    <li>Minimum age: 13</li>
+    <li>Follow all HRBRP, Discord, and MCNG rules (including Roblox & Discord ToS)</li>
+    <li>Quota: 45 minutes</li>
+    <li>Promotion requirement: 1 hour 30 minutes+</li>
+    <li>Basic military & roleplay knowledge required</li>
+    <li>SPaG required</li>
+  </ul>
+
+  <a href="https://melonly.xyz/forms/7286780001045712896" class="apply-btn" target="_blank">Apply Here</a>
+</div>
+
+<!-- REGULATIONS -->
+<div class="section">
+  <h3>Regulations</h3>
+
+  <p><strong>Discord Regulations:</strong></p>
+  <ul>
+    <li>Respect all others</li>
+    <li>Keep content strictly SFW</li>
+    <li>Use designated channels</li>
+    <li>No unnecessary pinging</li>
+    <li>No abuse attempts</li>
+    <li>No politics</li>
+  </ul>
+
+  <br>
+
+  <p><strong>In-Game Regulations:</strong></p>
+  <ul>
+    <li>RDM / Staff RDM / Mass RDM</li>
+    <li>VDM / Staff VDM / Mass VDM</li>
+    <li>Disrespect to staff/players</li>
+    <li>Trolling</li>
+    <li>FRP, NLR, FKL</li>
+    <li>Cuff Rush, Auto Jail, Cop Baiting</li>
+    <li>Tow Rush, GTA Driving, Fear RP</li>
+    <li>!mod Abuse, Tool Abuse, Mass Tool Abuse</li>
+    <li>Safezone Killing</li>
+    <li>NITRP</li>
+    <li>Staff Evasion, LTAP</li>
+    <li>Breaking ToS (PRC/Roblox)</li>
+    <li>Banned Weapons / Banned Items</li>
+    <li>Whitelisted Vehicles / Items</li>
+  </ul>
+
+  <p style="margin-top:10px;">
+    For more info visit:  
+    <a href="https://discord.gg/97RvxDMjZU" target="_blank" style="color:var(--gold)">Information Channel</a>
+  </p>
+</div>
+
+<!-- COMING SOON -->
+<div class="section">
+  <h3>Operations & Training</h3>
+  <p>Coming soon.</p>
+</div>
+
+<!-- BOARD STATEMENT -->
+<div class="section">
+  <h3>Statement from the Board of Generals</h3>
+
+  <div class="statement-box">
+    <img src="mcng_star_insignia.png" alt="Insignia">
+
+    <p>
+      The Maplecliff National Guard stands committed to excellence, discipline,
+      and strategic readiness. Our leadership upholds the highest standards in 
+      operational conduct, security, and professionalism. Every member of MCNG 
+      represents the backbone of Maplecliff’s defense capability.
+    </p>
+  </div>
+</div>
+
+<footer>
+  Maplecliff National Guard • 2025
+</footer>
+
+</div>
+
+<script>
+// Floating emblem logic
+const badge = document.getElementById("floatBadge");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 220) {
+    badge.classList.add("show-badge");
+  } else {
+    badge.classList.remove("show-badge");
+  }
+});
+</script>
+
+</body>
+</html>
 
